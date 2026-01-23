@@ -154,14 +154,54 @@
         <h2 class="rsvp-title">Очень ждем и будем рады<br>видеть вас на нашей свадьбе!</h2>
         <p class="rsvp-subtitle">Подтвердите, если сможете прийти</p>
 
-        <form class="rsvp-form" action="#" method="post">
+        <form class="rsvp-form" id="rsvp-form">
             <div class="form-row">
-                <input type="email" name="email" placeholder="Ваш имейл" required>
-                <input type="text" name="name" placeholder="Ваше имя" required>
-                <input type="tel" name="phone" placeholder="Ваш телефон" required>
-                <button type="submit" class="submit-btn">Я приду!</button>
+                <input type="email" name="email" id="email" placeholder="Ваш имейл" required>
+                <input type="text" name="name" id="name" placeholder="Ваше имя" required>
+                <input type="tel" name="phone" id="phone" placeholder="Ваш телефон" required>
+                <button type="submit" class="submit-btn" id="submit-btn">Я приду!</button>
             </div>
+            <p id="form-message" style="margin-top: 20px; display: none;"></p>
         </form>
+
+        <script>
+            document.getElementById('rsvp-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const btn = document.getElementById('submit-btn');
+                const msg = document.getElementById('form-message');
+
+                btn.disabled = true;
+                btn.textContent = 'Отправка...';
+
+                const data = {
+                    email: document.getElementById('email').value,
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value
+                };
+
+                try {
+                    await fetch('https://script.google.com/macros/s/AKfycbwP0ksM26KscrudRmFs7FgNFrGiyHzLsAsvgKIngCW4B1dUyao8FI7Lemmy7JVT3KA1/exec', {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+
+                    msg.style.display = 'block';
+                    msg.style.color = '#4a5a3a';
+                    msg.textContent = 'Спасибо! Ваш ответ записан. Ждём вас на свадьбе!';
+                    document.getElementById('rsvp-form').reset();
+                    btn.textContent = 'Отправлено!';
+                } catch (error) {
+                    msg.style.display = 'block';
+                    msg.style.color = '#8b1a1a';
+                    msg.textContent = 'Ошибка отправки. Попробуйте ещё раз.';
+                    btn.disabled = false;
+                    btn.textContent = 'Я приду!';
+                }
+            });
+        </script>
 
         <div class="contacts">
             <p class="contacts-title">Свяжитесь с нами по всем вопросам:</p>
