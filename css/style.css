@@ -19,8 +19,8 @@
     --color-green: #4a5a3a;
     --color-green-light: #5a6b4a;
     --color-red: #8b1a1a;
-    --color-text: #3a3a3a;
-    --color-text-light: #666;
+    --color-text: var(--color-green);
+    --color-text-light: var(--color-green);
     --font-script: 'Denistina', cursive;
     --font-serif: 'Cormorant Garamond', Georgia, serif;
 }
@@ -66,10 +66,23 @@ a:hover {
 .hero {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 60px 40px;
-    background-color: var(--color-bg-light);
+    background-color: var(--color-green);
+    gap: 40px;
+}
+
+.invitation-text-hero {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    color: var(--color-bg);
+    line-height: 1.8;
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .hero-frame {
@@ -77,6 +90,9 @@ a:hover {
     width: 100%;
     max-width: 700px;
     aspect-ratio: 7/10;
+    background-color: var(--color-bg);
+    border-radius: 8px;
+    padding: 20px;
 }
 
 .frame-image {
@@ -91,27 +107,31 @@ a:hover {
 
 .hero-content {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 2;
-    width: 80%;
 }
 
 .names {
+    position: absolute;
+    top: 8%;
+    right: 11%;
     font-family: var(--font-script);
     font-size: clamp(3rem, 10vw, 6rem);
     font-weight: 400;
     color: var(--color-green);
     line-height: 1.1;
-    margin-bottom: 30px;
+    text-align: right;
 }
 
 .couple-image {
-    max-width: 400px;
-    width: 100%;
-    margin-top: 20px;
+    position: absolute;
+    top: -10%;
+    left: -7%;
+    width: 110%;
+    max-width: none;
 }
 
 /* ==========================================================================
@@ -125,7 +145,7 @@ a:hover {
 
 .invitation-text {
     font-size: clamp(1.3rem, 3vw, 2rem);
-    color: var(--color-text);
+    color: var(--color-green);
     margin-bottom: 80px;
     line-height: 1.8;
     max-width: 800px;
@@ -138,13 +158,13 @@ a:hover {
     font-size: clamp(3rem, 8vw, 5.5rem);
     font-weight: 400;
     color: var(--color-green);
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .calendar {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
@@ -152,14 +172,13 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 35px;
+    padding: 10px 20px;
 }
 
 .weekday {
-    font-size: 1.3rem;
-    text-transform: uppercase;
-    color: var(--color-text-light);
-    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: var(--color-green);
+    margin-bottom: 5px;
 }
 
 .date {
@@ -168,46 +187,80 @@ a:hover {
     color: var(--color-green);
 }
 
+.day.active {
+    position: relative;
+}
+
 .day.active .weekday {
     color: var(--color-red);
 }
 
 .day.active .date {
     color: var(--color-red);
-    font-weight: 600;
+}
+
+.heart-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    width: 90px;
+    height: auto;
+    pointer-events: none;
 }
 
 /* ==========================================================================
    Секция 3: Место проведения
    ========================================================================== */
 .location {
-    padding: 100px 40px 120px;
+    padding: 60px 40px;
     text-align: center;
     background-color: var(--color-bg-light);
+    position: relative;
 }
 
-.location-image {
-    max-width: 550px;
-    margin: 0 auto 60px;
-}
-
-.location-image img {
+.location-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    opacity: 0.3;
 }
 
-.divider {
-    margin: 50px auto;
+.location-content {
+    position: relative;
+    z-index: 1;
 }
 
-.heart-divider {
-    width: 50px;
-    height: auto;
+.location-header {
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto 20px;
+}
+
+.location-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--color-green);
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+.location-subtitle {
+    font-family: var(--font-script);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 400;
+    color: var(--color-green);
+    margin-bottom: 15px;
 }
 
 .section-title {
     font-size: clamp(2.2rem, 5vw, 3.5rem);
     font-weight: 600;
-    color: var(--color-text);
+    color: var(--color-green);
     margin-bottom: 10px;
 }
 
@@ -221,26 +274,47 @@ a:hover {
 
 .location-info {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0 auto 15px;
 }
 
 .venue-name {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+    color: var(--color-green);
 }
 
 .venue-address {
     font-size: 1.2rem;
-    color: var(--color-text-light);
-    margin-bottom: 20px;
+    color: var(--color-green);
+    margin-bottom: 0;
+}
+
+.location-image {
+    max-width: 450px;
+    margin: 15px auto 15px;
+}
+
+.location-image img {
+    width: 100%;
 }
 
 .map-link {
     display: inline-block;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    color: var(--color-bg-light);
+    text-decoration: none;
+    padding: 12px 35px;
+    border: 1px solid var(--color-bg-light);
+    border-radius: 25px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.map-link:hover {
+    background-color: var(--color-bg-light);
     color: var(--color-green);
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* ==========================================================================
@@ -249,55 +323,75 @@ a:hover {
 .schedule {
     padding: 120px 40px;
     text-align: center;
-    background-color: var(--color-bg);
+    background-color: var(--color-bg-light);
 }
 
-.timeline {
-    max-width: 900px;
+.schedule-title {
+    font-family: var(--font-script);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 400;
+    color: var(--color-green);
+    margin-bottom: 60px;
+}
+
+.timeline-new {
+    max-width: 700px;
     margin: 0 auto;
 }
 
-.timeline-item {
-    display: grid;
-    grid-template-columns: 120px 1fr 120px;
-    gap: 40px;
-    align-items: start;
-    margin-bottom: 60px;
-    text-align: left;
+.timeline-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    gap: 30px;
+}
+
+.timeline-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.timeline-icon-left,
+.timeline-icon-right {
+    flex: 0 0 150px;
+}
+
+.timeline-icon-left img,
+.timeline-icon-right img {
+    width: 100%;
+    height: auto;
+}
+
+.timeline-icon-left.bottom {
+    align-self: flex-end;
+    margin-top: 30px;
+}
+
+.timeline-content-right,
+.timeline-content-left {
+    flex: 1;
+    text-align: center;
 }
 
 .time {
     font-family: var(--font-script);
-    font-size: 2rem;
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
     color: var(--color-green);
-    text-align: right;
-    padding-top: 5px;
-}
-
-.event {
-    border-left: 2px solid var(--color-green);
-    padding-left: 30px;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 5px;
 }
 
 .event-title {
     font-family: var(--font-script);
-    font-size: 2.2rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     color: var(--color-green);
     margin-bottom: 10px;
 }
 
 .event-desc {
-    font-size: 1.2rem;
-    color: var(--color-text-light);
-    line-height: 1.6;
-}
-
-.event-icon {
-    width: 100px;
-}
-
-.event-icon img {
-    width: 100%;
+    font-size: 0.9rem;
+    color: var(--color-green);
+    line-height: 1.5;
 }
 
 /* ==========================================================================
@@ -518,9 +612,6 @@ footer p {
         max-width: 450px;
     }
 
-    .couple-image {
-        max-width: 280px;
-    }
 
     .invitation {
         padding: 80px 20px;
@@ -550,21 +641,17 @@ footer p {
         padding: 80px 20px;
     }
 
-    .timeline-item {
-        grid-template-columns: 80px 1fr 70px;
-        gap: 20px;
+    .timeline-icon-left,
+    .timeline-icon-right {
+        flex: 0 0 100px;
     }
 
     .time {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 
     .event-title {
         font-size: 1.8rem;
-    }
-
-    .event-icon {
-        width: 70px;
     }
 
     .dresscode {
@@ -617,9 +704,6 @@ footer p {
         font-size: 2.5rem;
     }
 
-    .couple-image {
-        max-width: 200px;
-    }
 
     .invitation {
         padding: 60px 15px;
@@ -653,32 +737,29 @@ footer p {
         padding: 60px 15px;
     }
 
-    .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 15px;
+    .timeline-row {
+        flex-direction: column;
+        align-items: center;
         text-align: center;
-        padding-bottom: 40px;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .timeline-row.reverse {
+        flex-direction: column;
+    }
+
+    .timeline-icon-left,
+    .timeline-icon-right {
+        flex: 0 0 auto;
+        width: 100px;
     }
 
     .time {
         text-align: center;
-        font-size: 1.5rem;
-    }
-
-    .event {
-        border-left: none;
-        padding-left: 0;
-        text-align: center;
+        font-size: 2rem;
     }
 
     .event-title {
         font-size: 1.6rem;
-    }
-
-    .event-icon {
-        width: 60px;
-        margin: 15px auto 0;
     }
 
     .dresscode {
@@ -737,9 +818,6 @@ footer p {
         max-width: 800px;
     }
 
-    .couple-image {
-        max-width: 450px;
-    }
 
     .names {
         font-size: 7rem;
@@ -777,13 +855,13 @@ footer p {
         max-width: 1000px;
     }
 
-    .timeline-item {
-        grid-template-columns: 150px 1fr 140px;
-        gap: 50px;
+    .timeline-icon-left,
+    .timeline-icon-right {
+        flex: 0 0 200px;
     }
 
     .time {
-        font-size: 2.5rem;
+        font-size: 4rem;
     }
 
     .event-title {
@@ -791,11 +869,7 @@ footer p {
     }
 
     .event-desc {
-        font-size: 1.4rem;
-    }
-
-    .event-icon {
-        width: 130px;
+        font-size: 1.1rem;
     }
 
     .dresscode {
