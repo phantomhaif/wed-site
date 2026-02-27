@@ -1,0 +1,943 @@
+/* ==========================================================================
+   Свадебный сайт - Тимур и Юлия
+   Адаптивные стили
+   ========================================================================== */
+
+/* Custom Font - Denistina */
+@font-face {
+    font-family: 'Denistina';
+    src: url('../fonts/denistina.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* CSS Variables */
+:root {
+    --color-bg: #e6dac7;
+    --color-bg-light: #f5efe6;
+    --color-green: #4a5a3a;
+    --color-green-light: #5a6b4a;
+    --color-red: #8b1a1a;
+    --color-text: var(--color-green);
+    --color-text-light: var(--color-green);
+    --font-script: 'Denistina', cursive;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--color-green);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-green-light);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Секция 1: Hero
+   ========================================================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    background-color: var(--color-green);
+    gap: 40px;
+}
+
+.invitation-text-hero {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    color: var(--color-bg);
+    line-height: 1.8;
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.hero-frame {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 7/10;
+    background-color: var(--color-bg);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.frame-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+}
+
+.hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.names {
+    position: absolute;
+    top: 8%;
+    right: 11%;
+    font-family: var(--font-script);
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 400;
+    color: var(--color-green);
+    line-height: 1.1;
+    text-align: right;
+}
+
+.couple-image {
+    position: absolute;
+    top: -10%;
+    left: -7%;
+    width: 110%;
+    max-width: none;
+}
+
+/* ==========================================================================
+   Секция 2: Приглашение
+   ========================================================================== */
+.invitation {
+    padding: 120px 40px;
+    text-align: center;
+    background-color: var(--color-bg-light);
+}
+
+.invitation-text {
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    color: var(--color-green);
+    margin-bottom: 80px;
+    line-height: 1.8;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.month-title {
+    font-family: var(--font-script);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 400;
+    color: var(--color-green);
+    margin-bottom: 20px;
+}
+
+.calendar {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.weekday {
+    font-size: 1.2rem;
+    color: var(--color-green);
+    margin-bottom: 5px;
+}
+
+.date {
+    font-family: var(--font-script);
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: var(--color-green);
+}
+
+.day.active {
+    position: relative;
+}
+
+.day.active .weekday {
+    color: var(--color-red);
+}
+
+.day.active .date {
+    color: var(--color-red);
+}
+
+.heart-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    width: 90px;
+    height: auto;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   Секция 3: Место проведения
+   ========================================================================== */
+.location {
+    padding: 60px 40px;
+    text-align: center;
+    background-color: var(--color-bg-light);
+    position: relative;
+}
+
+.location-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.location-content {
+    position: relative;
+    z-index: 1;
+}
+
+.location-header {
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto 20px;
+}
+
+.location-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--color-green);
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+.location-subtitle {
+    font-family: var(--font-script);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 400;
+    color: var(--color-green);
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    color: var(--color-green);
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-family: var(--font-script);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 400;
+    color: var(--color-green);
+    margin-bottom: 50px;
+}
+
+.location-info {
+    max-width: 500px;
+    margin: 0 auto 15px;
+}
+
+.venue-name {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+    color: var(--color-green);
+}
+
+.venue-address {
+    font-size: 1.2rem;
+    color: var(--color-green);
+    margin-bottom: 0;
+}
+
+.location-image {
+    max-width: 450px;
+    margin: 15px auto 15px;
+}
+
+.location-image img {
+    width: 100%;
+}
+
+.map-link {
+    display: inline-block;
+    font-size: 1rem;
+    color: var(--color-bg-light);
+    text-decoration: none;
+    padding: 12px 35px;
+    border: 1px solid var(--color-bg-light);
+    border-radius: 25px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.map-link:hover {
+    background-color: var(--color-bg-light);
+    color: var(--color-green);
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   Секция 4: Программа дня
+   ========================================================================== */
+.schedule {
+    padding: 120px 40px;
+    text-align: center;
+    background-color: var(--color-bg-light);
+}
+
+.schedule-title {
+    font-family: var(--font-script);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 400;
+    color: var(--color-green);
+    margin-bottom: 60px;
+}
+
+.timeline-new {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.timeline-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    gap: 30px;
+}
+
+.timeline-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.timeline-icon-left,
+.timeline-icon-right {
+    flex: 0 0 150px;
+}
+
+.timeline-icon-left img,
+.timeline-icon-right img {
+    width: 100%;
+    height: auto;
+}
+
+.timeline-icon-left.bottom {
+    align-self: flex-end;
+    margin-top: 30px;
+}
+
+.timeline-content-right,
+.timeline-content-left {
+    flex: 1;
+    text-align: center;
+}
+
+.time {
+    font-family: var(--font-script);
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    color: var(--color-green);
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.event-title {
+    font-family: var(--font-script);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--color-green);
+    margin-bottom: 10px;
+}
+
+.event-desc {
+    font-size: 0.9rem;
+    color: var(--color-green);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   Секция 5: Дресс-код
+   ========================================================================== */
+.dresscode {
+    padding: 120px 40px;
+    text-align: center;
+    background-color: var(--color-bg-light);
+}
+
+.section-title-bold {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 60px;
+}
+
+.dresscode-content {
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.dresscode-image {
+    max-width: 400px;
+    margin: 0 auto 40px;
+}
+
+.dresscode-text {
+    font-size: 1.3rem;
+    line-height: 1.9;
+    color: var(--color-text);
+}
+
+.color-palette {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.color {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.5);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ==========================================================================
+   Секция 6: Галерея
+   ========================================================================== */
+.gallery {
+    padding: 100px 40px;
+    text-align: center;
+    background-color: var(--color-bg);
+    position: relative;
+}
+
+.gallery-slider {
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slide img {
+    max-width: 100%;
+    height: auto;
+}
+
+.slider-nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 550px;
+    margin: 30px auto 0;
+}
+
+.slider-nav button {
+    background: transparent;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--color-text-light);
+    cursor: pointer;
+    padding: 15px 30px;
+    transition: color 0.3s ease;
+}
+
+.slider-nav button:hover {
+    color: var(--color-green);
+}
+
+/* ==========================================================================
+   Секция 7: RSVP
+   ========================================================================== */
+.rsvp {
+    padding: 120px 40px;
+    text-align: center;
+    background-color: var(--color-bg-light);
+}
+
+.rsvp-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.rsvp-subtitle {
+    font-size: 1.3rem;
+    color: var(--color-text-light);
+    margin-bottom: 60px;
+}
+
+.rsvp-form {
+    max-width: 1000px;
+    margin: 0 auto 70px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.form-row input {
+    flex: 1;
+    min-width: 220px;
+    max-width: 280px;
+    padding: 18px 25px;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    background: white;
+    transition: border-color 0.3s ease;
+}
+
+.form-row input:focus {
+    outline: none;
+    border-color: var(--color-green);
+}
+
+.submit-btn {
+    padding: 18px 50px;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-red);
+    background: transparent;
+    border: 2px solid var(--color-red);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: var(--color-red);
+    color: white;
+}
+
+.contacts {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contacts-title {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.contact-info a {
+    color: var(--color-green);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+    padding: 40px 40px;
+    text-align: center;
+    background-color: var(--color-bg);
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+footer p {
+    font-size: 1rem;
+    color: var(--color-text-light);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+    body {
+        font-size: 17px;
+    }
+
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .hero-frame {
+        max-width: 450px;
+    }
+
+
+    .invitation {
+        padding: 80px 20px;
+    }
+
+    .invitation-text {
+        margin-bottom: 60px;
+    }
+
+    .calendar {
+        gap: 20px;
+    }
+
+    .day {
+        padding: 15px 20px;
+    }
+
+    .location {
+        padding: 80px 20px;
+    }
+
+    .location-image {
+        max-width: 400px;
+    }
+
+    .schedule {
+        padding: 80px 20px;
+    }
+
+    .timeline-icon-left,
+    .timeline-icon-right {
+        flex: 0 0 100px;
+    }
+
+    .time {
+        font-size: 2rem;
+    }
+
+    .event-title {
+        font-size: 1.8rem;
+    }
+
+    .dresscode {
+        padding: 80px 20px;
+    }
+
+    .dresscode-image {
+        max-width: 300px;
+    }
+
+    .color {
+        width: 55px;
+        height: 55px;
+    }
+
+    .gallery {
+        padding: 60px 20px;
+    }
+
+    .rsvp {
+        padding: 80px 20px;
+    }
+
+    .form-row input {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 50px 15px;
+    }
+
+    .hero-frame {
+        max-width: 340px;
+    }
+
+    .names {
+        font-size: 2.5rem;
+    }
+
+
+    .invitation {
+        padding: 60px 15px;
+    }
+
+    .invitation-text {
+        margin-bottom: 50px;
+    }
+
+    .calendar {
+        gap: 10px;
+    }
+
+    .day {
+        padding: 10px 15px;
+    }
+
+    .weekday {
+        font-size: 1rem;
+    }
+
+    .location {
+        padding: 60px 15px;
+    }
+
+    .location-image {
+        max-width: 300px;
+    }
+
+    .schedule {
+        padding: 60px 15px;
+    }
+
+    .timeline-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .timeline-row.reverse {
+        flex-direction: column;
+    }
+
+    .timeline-icon-left,
+    .timeline-icon-right {
+        flex: 0 0 auto;
+        width: 100px;
+    }
+
+    .time {
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .event-title {
+        font-size: 1.6rem;
+    }
+
+    .dresscode {
+        padding: 60px 15px;
+    }
+
+    .dresscode-image {
+        max-width: 220px;
+    }
+
+    .dresscode-text {
+        font-size: 1.1rem;
+    }
+
+    .color {
+        width: 45px;
+        height: 45px;
+    }
+
+    .gallery {
+        padding: 50px 15px;
+    }
+
+    .gallery-slider {
+        max-width: 300px;
+    }
+
+    .rsvp {
+        padding: 60px 15px;
+    }
+
+    .rsvp-title {
+        font-size: 1.5rem;
+    }
+
+    .contacts {
+        font-size: 1rem;
+    }
+
+    .contact-info {
+        font-size: 1rem;
+    }
+
+    footer {
+        padding: 30px 15px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1400px) {
+    body {
+        font-size: 22px;
+    }
+
+    .hero-frame {
+        max-width: 800px;
+    }
+
+
+    .names {
+        font-size: 7rem;
+    }
+
+    .invitation {
+        padding: 150px 60px;
+    }
+
+    .invitation-text {
+        font-size: 2.2rem;
+    }
+
+    .month-title {
+        font-size: 6rem;
+    }
+
+    .date {
+        font-size: 5.5rem;
+    }
+
+    .location {
+        padding: 150px 60px;
+    }
+
+    .location-image {
+        max-width: 650px;
+    }
+
+    .schedule {
+        padding: 150px 60px;
+    }
+
+    .timeline {
+        max-width: 1000px;
+    }
+
+    .timeline-icon-left,
+    .timeline-icon-right {
+        flex: 0 0 200px;
+    }
+
+    .time {
+        font-size: 4rem;
+    }
+
+    .event-title {
+        font-size: 2.8rem;
+    }
+
+    .event-desc {
+        font-size: 1.1rem;
+    }
+
+    .dresscode {
+        padding: 150px 60px;
+    }
+
+    .dresscode-content {
+        max-width: 900px;
+    }
+
+    .dresscode-image {
+        max-width: 500px;
+    }
+
+    .dresscode-text {
+        font-size: 1.5rem;
+    }
+
+    .color {
+        width: 90px;
+        height: 90px;
+    }
+
+    .gallery {
+        padding: 120px 60px;
+    }
+
+    .gallery-slider {
+        max-width: 700px;
+    }
+
+    .rsvp {
+        padding: 150px 60px;
+    }
+
+    .rsvp-title {
+        font-size: 3.5rem;
+    }
+
+    .rsvp-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .form-row input {
+        padding: 22px 30px;
+        font-size: 1.2rem;
+    }
+
+    .submit-btn {
+        padding: 22px 60px;
+        font-size: 1.2rem;
+    }
+
+    .contacts-title,
+    .contact-info {
+        font-size: 1.4rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+    }
+
+    .rsvp-form,
+    .slider-nav,
+    .map-link {
+        display: none;
+    }
+}
