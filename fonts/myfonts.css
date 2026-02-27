@@ -1,0 +1,24 @@
+/* myfonts.css - use this CSS file URL in Tilda (Site Settings → Fonts and Colors → Custom settings → CSS file)
+   The font files are in the /fonts/ folder relative to this CSS file.
+   Font name: "Denistina" — use exactly this name in Tilda's Font name field.
+*/
+@font-face {
+  font-family: "Denistina";
+  src: url("./fonts/ofont.ru_Denistina.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Map bold to the same file if you don't have a separate bold file */
+@font-face {
+  font-family: "Denistina";
+  src: url("./fonts/ofont.ru_Denistina.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Example usage */
+body { font-family: "Denistina", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+h1 { font-family: "Denistina", serif; font-weight:700; }
