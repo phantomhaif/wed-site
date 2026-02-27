@@ -44,8 +44,8 @@
             <a class="btn btn--outline" href="https://yandex.ru/maps/-/CLcbbC9g" target="_blank" rel="noopener noreferrer">Посмотреть на карте</a>
           </article>
           <p class="venue__transfer">
-            Всех желающих из Краснодара туда-обратно будет ожидать <strong>трансфер</strong>
-            (время и место сбора сообщим позже в телеграм-группе).
+            Не волнуйтесь, как добраться на наш праздник! Всех желающих из Краснодара туда-обратно
+            будет ожидать трансфер (время и место сбора сообщим позже в телеграмм-группе).
           </p>
         </div>
       </section>
@@ -65,7 +65,7 @@
               <img class="program-item__icon program-item__icon--right" src="images/IMG_4550.PNG" alt="" aria-hidden="true" />
               <p class="program-item__time">17:00</p>
               <p class="script-subtitle program-item__name">Церемония</p>
-              <p class="program-item__desc">Обмен клятвами и колечками под аплодисменты гостей</p>
+              <p class="program-item__desc">Обмен клятвами и колечками под<br />апплодисменты гостей</p>
             </article>
 
             <article class="program-item reveal">
@@ -91,7 +91,7 @@
               Свадьба будет на открытом воздухе и лучше отдать предпочтение
               закрытой обуви без каблука или на устойчивом каблуке.
             </p>
-            <a class="btn btn--outline" href="https://pin.it/1J7rIf692" target="_blank" rel="noopener noreferrer">Примеры образов</a>
+            <a class="btn btn--outline" href="https://pin.it/1J7rIf692" target="_blank" rel="noopener noreferrer">примеры образов</a>
           </article>
         </div>
       </section>
@@ -126,7 +126,7 @@
               Мы создали телеграм-чат нашего праздника, где можно будет узнать
               дополнительную информацию, поделиться фотографиями и видео в день свадьбы и после нее.
             </p>
-            <a class="btn btn--outline btn--small" href="https://example.com" target="_blank" rel="noopener noreferrer">вступить в чат</a>
+            <a class="btn btn--outline btn--small" href="https://t.me/+I3WyoPvMr101ZWJi" target="_blank" rel="noopener noreferrer">вступить в чат</a>
           </article>
 
           <img class="details__divider details__divider--bottom" src="images/IMG_4711.PNG" alt="" aria-hidden="true" />
@@ -187,6 +187,23 @@
               <div id="childrenFields" class="children" hidden>
                 <div id="childrenList" class="children__list"></div>
                 <button class="btn btn--outline btn--small" id="addChildBtn" type="button">+ Добавить ребенка</button>
+              </div>
+
+              <fieldset class="field-group">
+                <legend class="field__label">Есть ли у вас пищевая аллергия?</legend>
+                <label class="radio">
+                  <input type="radio" id="allergyYes" name="allergy" value="yes" required />
+                  <span>Да</span>
+                </label>
+                <label class="radio">
+                  <input type="radio" id="allergyNo" name="allergy" value="no" required />
+                  <span>Нет</span>
+                </label>
+              </fieldset>
+
+              <div id="allergyFields" class="children" hidden>
+                <label class="field__label" for="allergyDetails">Если да, укажите продукты</label>
+                <input class="field__input" type="text" id="allergyDetails" name="allergyDetails" />
               </div>
 
               <button class="btn btn--pill" type="submit">отправить</button>

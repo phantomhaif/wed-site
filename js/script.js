@@ -27,6 +27,10 @@
   const childrenFields = document.getElementById('childrenFields');
   const childrenList = document.getElementById('childrenList');
   const addChildBtn = document.getElementById('addChildBtn');
+  const allergyYes = document.getElementById('allergyYes');
+  const allergyNo = document.getElementById('allergyNo');
+  const allergyFields = document.getElementById('allergyFields');
+  const allergyDetails = document.getElementById('allergyDetails');
 
   let childCounter = 0;
 
@@ -90,6 +94,21 @@
     addChildBtn.addEventListener('click', createChildCard);
   }
 
+  if (allergyYes && allergyNo && allergyFields && allergyDetails) {
+    allergyYes.addEventListener('change', () => {
+      if (!allergyYes.checked) return;
+      allergyFields.hidden = false;
+      allergyDetails.required = true;
+    });
+
+    allergyNo.addEventListener('change', () => {
+      if (!allergyNo.checked) return;
+      allergyFields.hidden = true;
+      allergyDetails.required = false;
+      allergyDetails.value = '';
+    });
+  }
+
   if (form) {
     const iframe = document.createElement('iframe');
     iframe.name = 'rsvpHiddenFrame';
@@ -129,6 +148,8 @@
         attendance: yesNoMap[formData.get('attendance')] || formData.get('attendance'),
         transfer: yesNoMap[formData.get('transfer')] || formData.get('transfer'),
         children: yesNoMap[formData.get('children')] || formData.get('children'),
+        allergy: yesNoMap[formData.get('allergy')] || formData.get('allergy'),
+        allergyDetails: formData.get('allergyDetails') || '',
         childrenData: []
       };
 
@@ -153,6 +174,9 @@
 
       const childrenInput = form.querySelector('input[name="children"]:checked');
       if (childrenInput) childrenInput.value = result.children || childrenInput.value;
+
+      const allergyInput = form.querySelector('input[name="allergy"]:checked');
+      if (allergyInput) allergyInput.value = result.allergy || allergyInput.value;
 
       form.action = scriptUrl;
       form.method = 'POST';
