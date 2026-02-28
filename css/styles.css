@@ -154,6 +154,8 @@ a {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 1.6s ease, transform 1.6s ease;
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: opacity, transform;
 }
 
 .reveal.is-visible {
@@ -763,7 +765,7 @@ a {
     inset: 0;
     width: 100%;
     height: 100%;
-    transform: scale(1.06);
+    transform: scale(1.045);
   }
 
   .hero-card__art {
@@ -1072,8 +1074,8 @@ a {
 
   .program-item__icon--table {
     width: 22.5rem;
-    left: -8rem;
-    top: 11%;
+    left: -5.8rem;
+    top: -6%;
     transform: none;
   }
 
@@ -1083,8 +1085,16 @@ a {
   }
 
   .program-item:nth-child(2) .program-item__icon--right {
-    right: -14rem;
-    top: -40%;
+    right: -9.2rem;
+    top: -92%;
+  }
+
+  .program-item:nth-child(3) .program-item__name {
+    white-space: nowrap;
+  }
+
+  .program-item__desc {
+    font-size: clamp(0.92rem, 1.45vw, 1.22rem);
   }
 
   .rsvp-form .field__label,
@@ -1094,7 +1104,7 @@ a {
   .rsvp-form .child-card label,
   .rsvp-form .child-card input,
   .rsvp-form .success {
-    font-size: var(--body-copy-size) !important;
+    font-size: clamp(0.92rem, 1.45vw, 1.22rem) !important;
   }
 }
 
@@ -1210,8 +1220,99 @@ a {
     zoom: 0.75;
   }
 
+  .hero-card {
+    aspect-ratio: 768 / 1038;
+  }
+
+  .hero-card {
+    width: min(100%, 40.8rem) !important;
+    margin: 0 auto;
+  }
+
+  .hero-card .frame-card__frame {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.06);
+  }
+
+  .venue-card .frame-card__frame {
+    inset: 0.26rem 0.38rem;
+    width: calc(100% - 0.76rem);
+    height: calc(100% - 0.52rem);
+    transform: none;
+  }
+
+  .venue-card {
+    width: min(100%, 40.8rem) !important;
+    aspect-ratio: 768 / 1110;
+    margin: 0 auto;
+  }
+
+  .hero-card__art {
+    top: -5.7%;
+    left: 0.2%;
+    width: 99.2%;
+  }
+
+  .hero-card__title {
+    left: 43.6%;
+    top: 14.3%;
+    width: 38.7%;
+    font-size: clamp(2.35rem, 7.4vw, 5.6rem);
+    white-space: nowrap;
+  }
+
+  .venue-card__title {
+    left: 15.6%;
+    top: 13.2%;
+    font-size: clamp(2.85rem, 5vw, 4.25rem);
+  }
+
+  .venue-card__subtitle {
+    left: 19.3%;
+    top: 19.5%;
+    font-size: clamp(3.75rem, 6.4vw, 5.7rem);
+  }
+
+  .venue-card__place,
+  .venue-card__address {
+    left: 9%;
+    width: 82%;
+    font-size: clamp(0.9rem, 1.95vw, 1.15rem);
+    line-height: 1.12;
+  }
+
+  .venue-card__place {
+    top: 29.3%;
+  }
+
+  .venue-card__address {
+    top: 33.2%;
+  }
+
+  .venue-card__art {
+    width: 92%;
+    left: -0.4%;
+    top: 17.6%;
+  }
+
+  .venue-card .btn {
+    top: 86.5%;
+    min-width: 7.6rem;
+    min-height: 2.15rem;
+    padding: 0.42rem 0.9rem;
+    font-size: clamp(0.88rem, 2.15vw, 1.05rem);
+    color: #77612a;
+  }
+
   .dress-card {
+    width: min(100%, 40.8rem) !important;
     padding: 2.5rem 0.95rem 2.9rem;
+  }
+
+  .dress-card__text {
+    font-size: clamp(0.92rem, 1.45vw, 1.22rem);
   }
 
   .dress-card__palette {
@@ -1242,5 +1343,9 @@ a {
 
   .details__divider {
     width: min(100%, 22rem);
+  }
+
+  .rsvp-card {
+    width: min(100%, 40.8rem) !important;
   }
 }
