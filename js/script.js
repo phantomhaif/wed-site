@@ -1,15 +1,44 @@
 ﻿(function () {
-  const autoRevealTargets = document.querySelectorAll(
-    'main section h1, main section h2, main section h3, main section p, main section .btn, main section article, main section .field, main section .field-group, main section .children, main section .success'
-  );
+  const sections = Array.from(document.querySelectorAll('main section'));
+  const revealSet = new Set();
 
-  autoRevealTargets.forEach((el) => {
-    if (el.classList.contains('reveal')) return;
-    if (el.closest('.reveal')) return;
-    el.classList.add('reveal');
+  function addReveal(el) {
+    if (!el) return;
+    if (!el.classList.contains('reveal')) el.classList.add('reveal');
+    revealSet.add(el);
+  }
+
+  sections.forEach((section) => {
+    section.querySelectorAll(
+      'h1, h2, h3, p, .btn, .program-item, .details-item, .field, .field-group, .children, .success, .program-item__icon, .dress-card__stroke'
+    ).forEach(addReveal);
   });
 
-  const revealItems = document.querySelectorAll('.reveal');
+  function setDelay(el, seconds) {
+    el.style.setProperty('--reveal-delay', `${seconds.toFixed(2)}s`);
+  }
+
+  sections.forEach((section) => {
+    const items = Array.from(section.querySelectorAll('.reveal'));
+    items.forEach((item, idx) => setDelay(item, Math.min(idx * 0.08, 0.96)));
+  });
+
+  const dressSection = document.getElementById('dresscode');
+  if (dressSection) {
+    const dressOrder = [
+      dressSection.querySelector('.dress-card__title'),
+      dressSection.querySelector('.dress-card__text:first-of-type'),
+      ...Array.from(dressSection.querySelectorAll('.dress-card__stroke')),
+      dressSection.querySelector('.dress-card__text + .dress-card__text'),
+      dressSection.querySelector('.dress-card .btn')
+    ].filter(Boolean);
+
+    dressOrder.forEach((item, idx) => setDelay(item, 0.08 + idx * 0.14));
+  }
+
+  const revealItems = Array.from(
+    new Set([...document.querySelectorAll('.reveal'), ...revealSet])
+  );
 
   if ('IntersectionObserver' in window && revealItems.length) {
     const io = new IntersectionObserver(
@@ -21,7 +50,7 @@
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.16, rootMargin: '0px 0px -8% 0px' }
     );
 
     revealItems.forEach((item) => io.observe(item));
