@@ -224,7 +224,10 @@
       form.submit();
 
       form.hidden = true;
-      if (successMessage) successMessage.hidden = false;
+      if (successMessage) {
+        successMessage.hidden = false;
+        successMessage.classList.add('is-visible');
+      }
     });
   }
 })();
