@@ -1,4 +1,14 @@
 ﻿(function () {
+  const autoRevealTargets = document.querySelectorAll(
+    'main section h1, main section h2, main section h3, main section p, main section .btn, main section article, main section .field, main section .field-group, main section .children, main section .success'
+  );
+
+  autoRevealTargets.forEach((el) => {
+    if (el.classList.contains('reveal')) return;
+    if (el.closest('.reveal')) return;
+    el.classList.add('reveal');
+  });
+
   const revealItems = document.querySelectorAll('.reveal');
 
   if ('IntersectionObserver' in window && revealItems.length) {

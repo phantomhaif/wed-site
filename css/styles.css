@@ -1,7 +1,7 @@
 ﻿@font-face {
   font-family: "Denistina";
   src: url("../fonts/fonts/ofont.ru_Denistina.woff") format("woff");
-  font-display: swap;
+  font-display: block;
 }
 
 :root {
