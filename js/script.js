@@ -10,7 +10,7 @@
 
   sections.forEach((section) => {
     section.querySelectorAll(
-      'h1, h2, h3, p, .btn, .program-item, .details-item, .field, .field-group, .children, .success, .program-item__icon, .dress-card__stroke'
+      'h1, h2, h3, p, .btn, .program-item, .details-item, .field, .field-group, .children, .success, .dress-card__stroke'
     ).forEach(addReveal);
   });
 
@@ -33,7 +33,7 @@
       dressSection.querySelector('.dress-card .btn')
     ].filter(Boolean);
 
-    dressOrder.forEach((item, idx) => setDelay(item, 0.08 + idx * 0.14));
+    dressOrder.forEach((item, idx) => setDelay(item, 0.12 + idx * 0.3));
   }
 
   const revealItems = Array.from(
