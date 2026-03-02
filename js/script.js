@@ -58,6 +58,21 @@
     revealItems.forEach((item) => item.classList.add('is-visible'));
   }
 
+  document.querySelectorAll('.details-item__details').forEach((details) => {
+    const toggle = details.querySelector('.details-item__toggle');
+    if (!toggle) return;
+
+    const showLabel = 'показать список отелей';
+    const hideLabel = 'скрыть список отелей';
+
+    function syncToggle() {
+      toggle.textContent = details.open ? hideLabel : showLabel;
+    }
+
+    syncToggle();
+    details.addEventListener('toggle', syncToggle);
+  });
+
   const form = document.getElementById('rsvpForm');
   const scriptUrl = 'https://script.google.com/macros/s/AKfycbwP0ksM26KscrudRmFs7FgNFrGiyHzLsAsvgKIngCW4B1dUyao8FI7Lemmy7JVT3KA1/exec';
   const successMessage = document.getElementById('successMessage');
